@@ -23,13 +23,13 @@ namespace ServiceOAuth2.business.Services
 
         public async Task<(List<AuthorizationTokenResponse> Items, PaginationResponse Pagination)> GetAuthorizationTokens(AuthorizationTokensQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<AuthorizationTokenEntity>, AuthorizationTokensModel>(AuthorizationTokensRepository.SqlSelect, query.CastX<AuthorizationTokensModel>());
+            var response = await _baseRepository.Get<AuthorizationTokenEntity, AuthorizationTokensModel>(AuthorizationTokensRepository.SqlSelect, query.CastX<AuthorizationTokensModel>());
             return (response.List.CastX<List<AuthorizationTokenResponse>>(), response.Pagination);
         }
 
         public async Task<AuthorizationTokenResponse> GetAuthorizationToken(AuthorizationTokensQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<AuthorizationTokenEntity>, AuthorizationTokensModel>(AuthorizationTokensRepository.SqlSelect, query.CastX<AuthorizationTokensModel>());
+            var response = await _baseRepository.Get<AuthorizationTokenEntity, AuthorizationTokensModel>(AuthorizationTokensRepository.SqlSelect, query.CastX<AuthorizationTokensModel>());
 
             return response.List.Count == 0
                 ? throw new Exception($"None authorization token found.")

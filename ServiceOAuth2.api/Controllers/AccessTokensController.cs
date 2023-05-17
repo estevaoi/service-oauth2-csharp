@@ -65,7 +65,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(AccessTokenResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PostAccessToken([FromBody] AccessTokenRequest request)
+        private async Task<IActionResult> PostAccessToken([FromBody] AccessTokenRequest request)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPut("{accessTokenId}")]
         [SwaggerResponse(200, Type = typeof(AccessTokenResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PutAccessToken([FromBody] AccessTokenRequest request, [FromRoute] Guid accessTokenId)
+        private async Task<IActionResult> PutAccessToken([FromBody] AccessTokenRequest request, [FromRoute] Guid accessTokenId)
         {
             try
             {

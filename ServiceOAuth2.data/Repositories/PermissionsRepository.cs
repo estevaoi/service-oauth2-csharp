@@ -10,7 +10,7 @@
             SELECT
                 permission_id AS PermissionId,
                 user_id AS UserId,
-                user_id AS UserNome,
+                user_id AS UserName,
                 scope_id AS ScopeId,
                 scope_id AS ScopeNome
             FROM

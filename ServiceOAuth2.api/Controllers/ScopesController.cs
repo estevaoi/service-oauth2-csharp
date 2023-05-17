@@ -45,7 +45,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpGet("{scopeId}")]
         [SwaggerResponse(200, Type = typeof(ScopeResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> GetScope([FromQuery] Guid scopeId)
+        private async Task<IActionResult> GetScope([FromQuery] Guid scopeId)
         {
             try
             {

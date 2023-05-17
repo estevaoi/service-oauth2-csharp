@@ -23,13 +23,13 @@ namespace ServiceOAuth2.business.Services
 
         public async Task<(List<PermissionResponse> Items, PaginationResponse Pagination)> GetPermissions(PermissionsQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<PermissionEntity>, PermissionsModel>(PermissionsRepository.SqlSelect, query.CastX<PermissionsModel>());
+            var response = await _baseRepository.Get<PermissionEntity, PermissionsModel>(PermissionsRepository.SqlSelect, query.CastX<PermissionsModel>());
             return (response.List.CastX<List<PermissionResponse>>(), response.Pagination);
         }
 
         public async Task<PermissionResponse> GetPermission(PermissionsQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<PermissionEntity>, PermissionsModel>(PermissionsRepository.SqlSelect, query.CastX<PermissionsModel>());
+            var response = await _baseRepository.Get<PermissionEntity, PermissionsModel>(PermissionsRepository.SqlSelect, query.CastX<PermissionsModel>());
 
             return response.List.Count == 0
                 ? throw new Exception($"None permission found.")

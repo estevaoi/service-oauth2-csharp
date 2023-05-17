@@ -65,7 +65,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(AuthorizationTokenResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PostAuthorizationToken([FromBody] AuthorizationTokenRequest request)
+        private async Task<IActionResult> PostAuthorizationToken([FromBody] AuthorizationTokenRequest request)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPut("{authorizationTokenId}")]
         [SwaggerResponse(200, Type = typeof(AuthorizationTokenResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PutAuthorizationToken([FromBody] AuthorizationTokenRequest request, [FromRoute] Guid authorizationTokenId)
+        private async Task<IActionResult> PutAuthorizationToken([FromBody] AuthorizationTokenRequest request, [FromRoute] Guid authorizationTokenId)
         {
             try
             {

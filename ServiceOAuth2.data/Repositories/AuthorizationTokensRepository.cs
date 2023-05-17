@@ -10,7 +10,7 @@
             SELECT
                 authorization_token_id AS AuthorizationTokenId,
                 user_id AS UserId,
-                user_id AS UserNome,
+                user_id AS UserName,
                 application_id AS ApplicationId,
                 application_id AS ApplicationNome,
                 scope AS Scope,

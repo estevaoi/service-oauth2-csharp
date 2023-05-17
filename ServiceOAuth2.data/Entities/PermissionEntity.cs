@@ -6,7 +6,7 @@ namespace ServiceOAuth2.data.Entities
     {
         [JsonPropertyName("permission_id")] public Guid PermissionId { get; set; }
         [JsonPropertyName("user_id")] public Guid UserId { get; set; }
-        [JsonPropertyName("user_id")] public string UserNome { get; set; }
+        [JsonPropertyName("user_id")] public string UserName { get; set; }
         [JsonPropertyName("scope_id")] public Guid ScopeId { get; set; }
         [JsonPropertyName("scope_id")] public string ScopeNome { get; set; }
     }

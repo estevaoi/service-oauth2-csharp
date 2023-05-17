@@ -23,13 +23,13 @@ namespace ServiceOAuth2.business.Services
 
         public async Task<(List<UserResponse> Items, PaginationResponse Pagination)> GetUsers(UsersQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<UserEntity>, UsersModel>(UsersRepository.SqlSelect, query.CastX<UsersModel>());
+            var response = await _baseRepository.Get<UserEntity, UsersModel>(UsersRepository.SqlSelect, query.CastX<UsersModel>());
             return (response.List.CastX<List<UserResponse>>(), response.Pagination);
         }
 
         public async Task<UserResponse> GetUser(UsersQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<UserEntity>, UsersModel>(UsersRepository.SqlSelect, query.CastX<UsersModel>());
+            var response = await _baseRepository.Get<UserEntity, UsersModel>(UsersRepository.SqlSelect, query.CastX<UsersModel>());
 
             return response.List.Count == 0
                 ? throw new Exception($"None user found.")

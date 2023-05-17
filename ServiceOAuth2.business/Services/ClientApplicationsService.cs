@@ -23,13 +23,13 @@ namespace ServiceOAuth2.business.Services
 
         public async Task<(List<ClientApplicationResponse> Items, PaginationResponse Pagination)> GetClientApplications(ClientApplicationsQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<ClientApplicationEntity>, ClientApplicationsModel>(ClientApplicationsRepository.SqlSelect, query.CastX<ClientApplicationsModel>());
+            var response = await _baseRepository.Get<ClientApplicationEntity, ClientApplicationsModel>(ClientApplicationsRepository.SqlSelect, query.CastX<ClientApplicationsModel>());
             return (response.List.CastX<List<ClientApplicationResponse>>(), response.Pagination);
         }
 
         public async Task<ClientApplicationResponse> GetClientApplication(ClientApplicationsQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<ClientApplicationEntity>, ClientApplicationsModel>(ClientApplicationsRepository.SqlSelect, query.CastX<ClientApplicationsModel>());
+            var response = await _baseRepository.Get<ClientApplicationEntity, ClientApplicationsModel>(ClientApplicationsRepository.SqlSelect, query.CastX<ClientApplicationsModel>());
 
             return response.List.Count == 0
                 ? throw new Exception($"None application found.")

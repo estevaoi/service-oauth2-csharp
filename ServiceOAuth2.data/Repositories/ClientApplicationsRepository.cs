@@ -8,11 +8,11 @@
 
         public const string SqlSelect = @"
             SELECT
-                application_id,
-                application_name,
-                client_identifier,
-                client_secret,
-                redirect_urls
+                application_id AS ApplicationId,
+                application_name AS ApplicationName,
+                client_identifier AS ClientIdentifier,
+                client_secret AS ClientSecret,
+                redirect_urls AS RedirectUrls
             FROM
                 OAuthDB.client_applications";
 

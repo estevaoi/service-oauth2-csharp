@@ -45,7 +45,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpGet("{permissionId}")]
         [SwaggerResponse(200, Type = typeof(PermissionResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> GetPermission([FromQuery] Guid permissionId)
+        private async Task<IActionResult> GetPermission([FromQuery] Guid permissionId)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPost]
         [SwaggerResponse(200, Type = typeof(PermissionResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PostPermission([FromBody] PermissionRequest request)
+        private async Task<IActionResult> PostPermission([FromBody] PermissionRequest request)
         {
             try
             {
@@ -85,7 +85,7 @@ namespace ServiceOAuth2.api.Controllers
         [HttpPut("{permissionId}")]
         [SwaggerResponse(200, Type = typeof(PermissionResponse))]
         [SwaggerResponse(400, Type = typeof(ErrorResponse))]
-        public async Task<IActionResult> PutPermission([FromBody] PermissionRequest request, [FromRoute] Guid permissionId)
+        private async Task<IActionResult> PutPermission([FromBody] PermissionRequest request, [FromRoute] Guid permissionId)
         {
             try
             {

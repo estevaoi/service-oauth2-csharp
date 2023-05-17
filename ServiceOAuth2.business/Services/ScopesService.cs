@@ -23,13 +23,13 @@ namespace ServiceOAuth2.business.Services
 
         public async Task<(List<ScopeResponse> Items, PaginationResponse Pagination)> GetScopes(ScopesQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<ScopeEntity>, ScopesModel>(ScopesRepository.SqlSelect, query.CastX<ScopesModel>());
+            var response = await _baseRepository.Get<ScopeEntity, ScopesModel>(ScopesRepository.SqlSelect, query.CastX<ScopesModel>());
             return (response.List.CastX<List<ScopeResponse>>(), response.Pagination);
         }
 
         public async Task<ScopeResponse> GetScope(ScopesQueryRequest query)
         {
-            var response = await _baseRepository.Get<ListResponse<ScopeEntity>, ScopesModel>(ScopesRepository.SqlSelect, query.CastX<ScopesModel>());
+            var response = await _baseRepository.Get<ScopeEntity, ScopesModel>(ScopesRepository.SqlSelect, query.CastX<ScopesModel>());
 
             return response.List.Count == 0
                 ? throw new Exception($"None scope found.")

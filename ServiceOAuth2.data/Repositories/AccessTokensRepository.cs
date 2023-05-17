@@ -10,9 +10,7 @@
             SELECT
                 access_token_id AS AccessTokenId,
                 user_id AS UserId,
-                user_id AS UserNome,
                 application_id AS ApplicationId,
-                application_id AS ApplicationNome,
                 scope AS Scope,
                 created_at AS CreatedAt,
                 expires_at AS ExpiresAt
