@@ -7,7 +7,7 @@ namespace ServiceOAuth2.business.Services
 {
     public interface IPermissionsService
     {
-        Task<(List<PermissionResponse>, PaginationResponse)> GetPermissions(PermissionsQueryRequest query);
+        Task<(List<PermissionResponse> Items, PaginationResponse Pagination)> GetPermissions(PermissionsQueryRequest query);
         Task<PermissionResponse> GetPermission(PermissionsQueryRequest query);
         Task<PermissionResponse> Insert(PermissionRequest request);
         Task<PermissionResponse> Update(PermissionRequest request, Guid permissionId);

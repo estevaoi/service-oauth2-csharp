@@ -21,7 +21,7 @@ namespace ServiceOAuth2.business.Services
             _baseRepository = baseRepository;
         }
 
-        public async Task<(List<PermissionResponse>, PaginationResponse)> GetPermissions(PermissionsQueryRequest query)
+        public async Task<(List<PermissionResponse> Items, PaginationResponse Pagination)> GetPermissions(PermissionsQueryRequest query)
         {
             var response = await _baseRepository.Get<ListResponse<PermissionEntity>, PermissionsModel>(PermissionsRepository.SqlSelect, query.CastX<PermissionsModel>());
             return (response.List.CastX<List<PermissionResponse>>(), response.Pagination);

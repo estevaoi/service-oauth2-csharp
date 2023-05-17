@@ -7,7 +7,7 @@ namespace ServiceOAuth2.business.Services
 {
     public interface IAccessTokensService
     {
-        Task<(List<AccessTokenResponse>, PaginationResponse)> GetAccessTokens(AccessTokensQueryRequest query);
+        Task<(List<AccessTokenResponse> Items, PaginationResponse Pagination)> GetAccessTokens(AccessTokensQueryRequest query);
         Task<AccessTokenResponse> GetAccessToken(AccessTokensQueryRequest query);
         Task<AccessTokenResponse> Insert(AccessTokenRequest request);
         Task<AccessTokenResponse> Update(AccessTokenRequest request, Guid accessTokenId);

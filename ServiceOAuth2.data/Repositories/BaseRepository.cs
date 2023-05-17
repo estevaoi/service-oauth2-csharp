@@ -13,7 +13,7 @@ namespace ServiceOAuth2.data.Repositories
 {
     public class BaseRepository : IBaseRepository
     {
-        private readonly string _connectionString = Environment.GetEnvironmentVariable("DatabaseConnectionString");
+        private readonly string _connectionString = Environment.GetEnvironmentVariable("DATABASE_CONNECTIONSTRING");
 
         public BaseRepository() { }
 
@@ -26,7 +26,7 @@ namespace ServiceOAuth2.data.Repositories
             foreach (var property in typeof(M).GetProperties())
             {
                 var propertyName = property.Name;
-                var propertyValue = model.GetType().Name == "String" ? "" : property.GetValue(model)?.ToString() ?? "";
+                var propertyValue = model?.GetType()?.Name == "String" ? "" : property.GetValue(model)?.ToString() ?? "";
                 var propertyOperator = propertyValue.Contains("%") ? "LIKE" : "=";
                 var propertyAttribute = property.GetCustomAttributesData()?.FirstOrDefault()?.ConstructorArguments[0].Value?.ToString() ?? "";
                 var propertyIsQueryWhere = !String.IsNullOrEmpty(propertyAttribute) && !String.IsNullOrEmpty(propertyValue);
@@ -89,7 +89,7 @@ namespace ServiceOAuth2.data.Repositories
         private string QueryWhere<M, E>(M model)
         {
             var propertiesData = GetPropertiesData<M>(model);
-            var orderBy = propertiesData.Find(x => x.Name == "OrderBy").Value;
+            var orderBy = propertiesData.Find(x => x.Name == "OrderBy")?.Value;
             var queryWhere = propertiesData.Where(x => x.IsQueryWhere)
                                                .Select(x => $"{x.Attribute} {x.Operator} @{x.Name}")
                                                .ToList();
@@ -99,6 +99,8 @@ namespace ServiceOAuth2.data.Repositories
 
         private string QueryOrderBy<T>(string columns)
         {
+            if (columns == null || columns.Length == 0) return "";
+
             var properties = GetPropertiesData<T>(columns).ToDictionary(x => x.Name.ToUpper());
 
             var fieldsOrderBy = ParseFieldsOrderBy(columns)

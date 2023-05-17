@@ -7,7 +7,7 @@ namespace ServiceOAuth2.business.Services
 {
     public interface IClientApplicationsService
     {
-        Task<(List<ClientApplicationResponse>, PaginationResponse)> GetClientApplications(ClientApplicationsQueryRequest query);
+        Task<(List<ClientApplicationResponse> Items, PaginationResponse Pagination)> GetClientApplications(ClientApplicationsQueryRequest query);
         Task<ClientApplicationResponse> GetClientApplication(ClientApplicationsQueryRequest query);
         Task<ClientApplicationResponse> Insert(ClientApplicationRequest request);
         Task<ClientApplicationResponse> Update(ClientApplicationRequest request, Guid applicationId);

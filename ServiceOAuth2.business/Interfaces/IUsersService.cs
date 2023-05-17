@@ -7,7 +7,7 @@ namespace ServiceOAuth2.business.Services
 {
     public interface IUsersService
     {
-        Task<(List<UserResponse>, PaginationResponse)> GetUsers(UsersQueryRequest query);
+        Task<(List<UserResponse> Items, PaginationResponse Pagination)> GetUsers(UsersQueryRequest query);
         Task<UserResponse> GetUser(UsersQueryRequest query);
         Task<UserResponse> Insert(UserRequest request);
         Task<UserResponse> Update(UserRequest request, Guid userId);

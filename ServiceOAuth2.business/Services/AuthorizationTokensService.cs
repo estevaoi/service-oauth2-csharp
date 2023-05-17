@@ -21,7 +21,7 @@ namespace ServiceOAuth2.business.Services
             _baseRepository = baseRepository;
         }
 
-        public async Task<(List<AuthorizationTokenResponse>, PaginationResponse)> GetAuthorizationTokens(AuthorizationTokensQueryRequest query)
+        public async Task<(List<AuthorizationTokenResponse> Items, PaginationResponse Pagination)> GetAuthorizationTokens(AuthorizationTokensQueryRequest query)
         {
             var response = await _baseRepository.Get<ListResponse<AuthorizationTokenEntity>, AuthorizationTokensModel>(AuthorizationTokensRepository.SqlSelect, query.CastX<AuthorizationTokensModel>());
             return (response.List.CastX<List<AuthorizationTokenResponse>>(), response.Pagination);

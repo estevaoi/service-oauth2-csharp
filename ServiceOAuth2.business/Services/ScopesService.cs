@@ -21,7 +21,7 @@ namespace ServiceOAuth2.business.Services
             _baseRepository = baseRepository;
         }
 
-        public async Task<(List<ScopeResponse>, PaginationResponse)> GetScopes(ScopesQueryRequest query)
+        public async Task<(List<ScopeResponse> Items, PaginationResponse Pagination)> GetScopes(ScopesQueryRequest query)
         {
             var response = await _baseRepository.Get<ListResponse<ScopeEntity>, ScopesModel>(ScopesRepository.SqlSelect, query.CastX<ScopesModel>());
             return (response.List.CastX<List<ScopeResponse>>(), response.Pagination);

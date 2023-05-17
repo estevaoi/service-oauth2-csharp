@@ -7,7 +7,7 @@ namespace ServiceOAuth2.business.Services
 {
     public interface IScopesService
     {
-        Task<(List<ScopeResponse>, PaginationResponse)> GetScopes(ScopesQueryRequest query);
+        Task<(List<ScopeResponse> Items, PaginationResponse Pagination)> GetScopes(ScopesQueryRequest query);
         Task<ScopeResponse> GetScope(ScopesQueryRequest query);
         Task<ScopeResponse> Insert(ScopeRequest request);
         Task<ScopeResponse> Update(ScopeRequest request, Guid scopeId);

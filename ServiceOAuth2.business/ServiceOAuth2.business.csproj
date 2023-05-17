@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ServiceOAuth2.data\ServiceOAuth2.data.csproj" />
     <ProjectReference Include="..\ServiceOAuth2.domain\ServiceOAuth2.domain.csproj" />
   </ItemGroup>
